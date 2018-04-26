@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
-import Header from './header';
-import './assets/css/comp.css'
+import LoginContainer from '../containers/loginContainer';
 
 class App extends Component {
-  render() {
-    return (
-      <div>
-        <Header />
-      </div>
-    );
-  }
+    render() {
+        console.log(this.props)
+        return (
+            <div>
+                <LoginContainer />
+            </div>
+        );
+    }
 }
 
 export default App;

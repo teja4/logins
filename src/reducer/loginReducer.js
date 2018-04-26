@@ -1,17 +1,19 @@
-function LoginReducer(prevState = { isLogin: false }, action) {
-    let newState;
+
+function LoginReducer(initailLogState = {
+    isLogin: false
+}, action) {
+    let newLogState;
     switch (action.type) {
         case "login":
-            newState = { ...prevState, isLogin: true }
+            newLogState = {
+                ...initailLogState, isLogin: true
+            }
             break;
-        case "logout":
-            newState = { ...prevState, isLogin: false }
-            break
         default:
-            newState = { ...prevState, isLogin: false }
+            newLogState = { ...initailLogState }
             break;
     }
-    return newState;
+    return newLogState;
 }
 
 export default LoginReducer;

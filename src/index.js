@@ -1,16 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.css';
+import reactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-import App from './component/App';
+import App from './component//App';
 import LoginReducer from './reducer/loginReducer';
 
-const AppStore = createStore(LoginReducer);
+const Appstore = createStore(LoginReducer)
 
-ReactDOM.render(<Provider store={AppStore}>
-    <Router>
-        <App />
-    </Router></Provider>, document.getElementById('root'));
+reactDOM.render(<Provider store={Appstore}><App /></Provider>, document.getElementById('root'));

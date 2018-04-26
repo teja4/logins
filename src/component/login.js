@@ -1,31 +1,34 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
+
+import { login } from '../actions/loginAction';
 
 class Login extends Component {
+    constructor() {
+        super();
+        this.auth = this.auth.bind(this);
+    }
+    auth() {
+        let log = {
+            "email": "teja",
+            "password": "123"
+        }
+        let { dispatch } = this.props;
+        if (log.email === this.email.value && log.password === this.psd.value) {
+            dispatch(login())
+        }
+    }
     render() {
-        console.log(this.props.isLogin);
+        console.log(this.props)
         return (
-            <div className='container'>
-                <div className='row justify-content-center'>
-                    <div className='col-md-12 text-center'>
-                        <h1>Login</h1>
-                    </div>
-                    <div className='col-md-4'>
-                        <div className='form-group'>
-                            <label>user name</label>
-                            <input type='text' className='form-control' placeholder='email' />
-                        </div>
-                        <div className='form-group'>
-                            <label>password</label>
-                            <input type='password' className='form-control' placeholder='password' />
-                        </div>
-                        <div className='form-group'>
-                            <Button type='button' color='primary' onClick={this.props.loginHandler}>
-                                Login
-                            </Button>
-                        </div>
-                    </div>
-                </div>
+            <div>
+                {(this.props.isLogin) ?
+                    <React.Fragment>
+                        <h1>login</h1>
+                        <input type='text' placeholder='email' id='email' name='email' ref={(node) => this.email = node} />
+                        <input type='password' placeholder='password' id='psd' name='psd' ref={(node) => this.psd = node} />
+                        <input type='button' value='submit' onClick={this.auth} />
+                    </React.Fragment> : <h1>Iam Logged in</h1>
+                }
             </div>
         );
     }
