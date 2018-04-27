@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 
-import { login } from '../actions/loginAction';
+import { login,logout } from '../actions/loginAction';
 
 class Login extends Component {
     constructor() {
         super();
         this.auth = this.auth.bind(this);
+    }
+    componentDidMount(){
+        let {dispatch} = this.props;
+        dispatch(logout());
     }
     auth() {
         let log = {
@@ -18,17 +22,26 @@ class Login extends Component {
         }
     }
     render() {
-        console.log(this.props)
         return (
-            <div>
-                {(this.props.isLogin) ?
-                    <React.Fragment>
-                        <h1>login</h1>
-                        <input type='text' placeholder='email' id='email' name='email' ref={(node) => this.email = node} />
-                        <input type='password' placeholder='password' id='psd' name='psd' ref={(node) => this.psd = node} />
-                        <input type='button' value='submit' onClick={this.auth} />
-                    </React.Fragment> : <h1>Iam Logged in</h1>
-                }
+            <div className='container'>
+                <div className='row justify-content-center align-items-center'>
+                    <div className='col-md-4'>
+                        {(!this.props.isLogin) ?
+                                <React.Fragment>
+                                    <h1>login</h1>
+                                    <div className='form-group'>
+                                        <input type='text' placeholder='email' id='email' name='email' className='form-control' ref={(node) => this.email = node} />
+                                    </div>
+                                    <div className='form-group'>
+                                        <input type='password' placeholder='password' id='psd' name='psd' className='form-control' ref={(node) => this.psd = node} />
+                                    </div>
+                                    <div className='form-group'>
+                                        <input type='button' value='submit' onClick={this.auth} />
+                                    </div>
+                            </React.Fragment> : <h1>Iam Logged in</h1>
+                        }
+                    </div>
+                </div>
             </div>
         );
     }

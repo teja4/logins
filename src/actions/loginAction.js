@@ -3,3 +3,9 @@ export function login() {
         type: "login",
     }
 }
+
+export function logout(){
+	return {
+		type :"logout"
+	}
+}

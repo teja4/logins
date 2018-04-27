@@ -9,6 +9,10 @@ function LoginReducer(initailLogState = {
                 ...initailLogState, isLogin: true
             }
             break;
+        case "logout":
+            newLogState = {
+                ...initailLogState,isLogin: false
+            }
         default:
             newLogState = { ...initailLogState }
             break;
