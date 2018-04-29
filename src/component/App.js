@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import HeaderContainer from '../containers/loginContainer';
+import RouterContainer from '../containers/routerContainer';
 
 class App extends Component {
     render() {
-        console.log(this.props)
         return (
             <section>
-                <HeaderContainer />
+
+                <RouterContainer />
             </section>
         );
     }
