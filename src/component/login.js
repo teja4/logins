@@ -11,37 +11,24 @@ class Login extends Component {
         this.auth = this.auth.bind(this);
     }
     auth() {
-        let log = [{
-            "email": "teja",
-            "password": "123"
-        }, {
-            "email": "tejash",
-            "password": "123"
-        },
-        {
-            "email": "vimala",
-            "password": "123"
-        }
-        ]
-        console.log(log);
-        let { dispatch } = this.props;
+         
         let enteredemail = this.email.value;
-        let enterPsd = this.password.value;
-        axios.get('https://jsonplaceholder.typicode.com/users')
-            .then(function (response) {
-                console.log(enteredemail)
-                const data = response.data;
-                data.find((el) => {
-                    if (el.name === enteredemail && el.id === enterPsd) {
-                        dispatch(login())
-                    }
-
-
-                })
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        let enterPsd = this.psd.value;
+        
+        axios.post('https://reqres.in/api/login', {
+            "email": enteredemail,
+            "password": enterPsd
+          })
+          .then(function (response) {
+            console.log(response);
+            if(response.status === 200){
+                alert('success');
+            }
+          })
+          .catch(function (error) {
+            alert('error')
+          });
+      
     }
     render() {
         console.log(this.props.isLogin.isLogin)

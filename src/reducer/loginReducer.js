@@ -1,6 +1,6 @@
 
 function LoginReducer(initailLogState = {
-    isLogin: false
+    isLogin: true
 }, action) {
     let newLogState;
     switch (action.type) {
